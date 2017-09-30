@@ -1,0 +1,33 @@
+<SmartAssemblyProject ProjectId="{750c0729-cd08-421d-9125-3dc0ae9c69f7}" Version="2.0">
+    <MainAssemblyFileName>.\bin\Debug\Micheal - Donlil Trump\Fonty2.exe</MainAssemblyFileName>
+    <Configuration Name="Release">
+        <Options>
+            <ExceptionReporting Template="res:{SmartExceptions}.1033.dll" />
+            <FeatureUsageReporting Template="res:SmartUsageWithUIConsentFirstRun1033.dll" />
+            <StringsEncoding Encode="1" UseImprovedEncoding="0" />
+            <StrongNameSigning KeyFileName=".\Ally_SNK_Fonty2.snk" Sign="1" TamperProtect="1" />
+            <OtherOptimizations ManageMemory="1" SealClasses="1" />
+            <Obfuscation FieldsNameMangling="2" NameMangling="3" />
+            <OtherProtections SuppressIldasm="1" />
+            <Debugging CreatePDB="0" />
+        </Options>
+        <ApplicationName />
+        <Destination DestinationFileName=".\bin\Debug\Micheal - Donlil Trump\Fonty2_o.exe" />
+        <Assemblies>
+            <Assembly AssemblyName="Fonty2, Culture=neutral, PublicKeyToken=null">
+                <Merging>
+                    <ResourcesCompression />
+                    <MemberRefsProxy />
+                    <Pruning Prune="1">
+                        <Exclusion />
+                    </Pruning>
+                    <Obfuscation Obfuscate="1">
+                        <Exclusion />
+                    </Obfuscation>
+                    <ControlFlow Obfuscate="1" ObfuscationLevel="4" />
+                </Merging>
+                <Embedding />
+            </Assembly>
+        </Assemblies>
+    </Configuration>
+</SmartAssemblyProject>
