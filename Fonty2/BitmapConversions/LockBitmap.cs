@@ -3,13 +3,11 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace BitmapConversions
-{
+namespace BitmapConversions {
     // Necessary attribution to coding of 'LockBitmap':
     // Author: Vano Maisuradze,
     // Link: https://www.codeproject.com/Tips/240428/Work-with-bitmap-faster-with-Csharp
-    public class LockBitmap
-    {
+    public class LockBitmap {
         Bitmap source = null;
         IntPtr Iptr = IntPtr.Zero;
         BitmapData bitmapData = null;
@@ -19,18 +17,15 @@ namespace BitmapConversions
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public LockBitmap(Bitmap source)
-        {
+        public LockBitmap(Bitmap source) {
             this.source = source;
         }
 
         /// <summary>
         /// Lock bitmap data
         /// </summary>
-        public void LockBits()
-        {
-            try
-            {
+        public void LockBits() {
+            try {
                 // Get width and height of bitmap
                 Width = source.Width;
                 Height = source.Height;
@@ -45,8 +40,7 @@ namespace BitmapConversions
                 Depth = System.Drawing.Bitmap.GetPixelFormatSize(source.PixelFormat);
 
                 // Check if bpp (Bits Per Pixel) is 8, 24, or 32
-                if (Depth != 8 && Depth != 24 && Depth != 32)
-                {
+                if (Depth != 8 && Depth != 24 && Depth != 32) {
                     throw new ArgumentException("Only 8, 24 and 32 bpp images are supported.");
                 }
 
@@ -61,9 +55,7 @@ namespace BitmapConversions
 
                 // Copy data from pointer to array
                 Marshal.Copy(Iptr, Pixels, 0, Pixels.Length);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -71,18 +63,14 @@ namespace BitmapConversions
         /// <summary>
         /// Unlock bitmap data
         /// </summary>
-        public void UnlockBits()
-        {
-            try
-            {
+        public void UnlockBits() {
+            try {
                 // Copy data from byte array to pointer
                 Marshal.Copy(Pixels, 0, Iptr, Pixels.Length);
 
                 // Unlock bitmap data
                 source.UnlockBits(bitmapData);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -93,8 +81,7 @@ namespace BitmapConversions
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Color GetPixel(int x, int y)
-        {
+        public Color GetPixel(int x, int y) {
             Color clr = Color.Empty;
 
             // Get color components count
@@ -136,8 +123,7 @@ namespace BitmapConversions
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="color"></param>
-        public void SetPixel(int x, int y, Color color)
-        {
+        public void SetPixel(int x, int y, Color color) {
             // Get color components count
             int cCount = Depth / 8;
 
